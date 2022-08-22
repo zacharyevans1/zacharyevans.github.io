@@ -64,6 +64,31 @@
             h2, h3 {
                 margin: 0px;
             }
+            /* portfolio styles */
+         .content h1 {
+             color: black;
+         }
+
+         #portfolio {
+             list-style-type: none;
+             padding-left: 0;
+         }
+
+         #portfolio li {
+             background: #fff;
+             padding: 10px;
+             border-radius: 10px;
+             margin-bottom: 10px;
+         }
+
+         #portfolio li:hover {
+             background: #eee;
+         }
+
+         #portfolio a {
+             text-decoration: none;
+             color: #454545;
+         }
          </style>
     </head>
     
@@ -78,26 +103,14 @@
                 </ul>
             </nav>
             <main>
-                <!--sidebar section-->
-                <div div class = "sidebar">
-                    <img class = "sidebar-img" src = "images/Nebula Image.jfif">
-                </div>
-
-                <!--Content section-->
                 <div class = "content">
-               <h2>Zachary Evans</h2>
-               <p>Student at NHS</p>
-                <!-- Interests section -->
-                <div id = "interests">
-                    <h3>Interests</h3>
-                    <ul>
-                        <li>Video Games
-                        <li>Youtube
-                        <li>Chillin</li>
+                    <h1>Portfolio</h1>
+                    <ul id = "portfolio">
+                        <li><a href="projects/platformer/">Platformer : A cannon - dodging, collectible - grabbing adventure game for Halleb0t</a></li>
+                        <li><a href="projects/bouncing-box/">Bouncing Box : A project that gives you a taste of game development on the web </a></li>
+                        <li><a href="projects/circularity/">Circularity : A motion poem using random number generation and velocity applied to circle shapes...</a></li>
                     </ul>
-                </div>
-
-                </div>
+                    </div>
             </main>
 
         </div>
