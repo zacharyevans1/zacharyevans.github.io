@@ -53,6 +53,9 @@
     createCollectable(type.max, 790, 590, 6, 0.7);
     createCollectable(type.kennedi, 830, 600, 6, 0.7);
     createCollectable(type.db, 830, 590, 6, 0.7);
+    createCollectable(type.steve, 500, 420, 6, 0.7);
+    createCollectable(type.kennedi, 500, 270, 6, 0.7);
+    createCollectable(type.kennedi, 670, 100, 6, 0.7);
     // ALL YOUR CODE GOES ABOVE HERE ///////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////
   }
