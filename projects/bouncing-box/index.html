@@ -63,7 +63,7 @@
 			
 			// TODO 2 - Variable declarations 
 			var positionX = 0;
-
+			var points = 0;
 			
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
@@ -87,7 +87,9 @@
 			//the box gets faster
 			//changes position
 			positionX = 0;
-			
+
+			points += 1;
+			changeBoxText(points);
 			};
 		})();
 	</script>
