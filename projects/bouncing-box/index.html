@@ -6,8 +6,12 @@
 	<script src="jquery.min.js"></script>
 	<style>
 	body    {
-		background-image: url("images/png-transparent-cosmic-galaxy-galaxy-nebula-space-universe-desktop-space-atmosphere-computer-wallpaper-outer-space-thumbnail.png");
+		background-image: url("images/purple.png");
 		background-color: #79c523;
+		-webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
 		}
 		.box {
 			width: 70px;
@@ -112,8 +116,12 @@
 				//points go up by 1
 				//the box gets faster
 				//changes position
-				positionX = 0;
+				randNum = Math.random() * 100;	
+				console.log(randNum);
 				
+				positionX = randNum;
+				positionY = randNum;
+
 				points += 1;
 				changeBoxText(points);
 				if (speed > 0){
