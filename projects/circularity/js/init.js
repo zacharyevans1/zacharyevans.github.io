@@ -20,13 +20,22 @@ var init = function (window) {
         ////////////////////////////////////////////////////////////
         
         // TODO 1 : Declare and initialize our variables
-
-
+    var circle; //establishes a variable
+    var circles; //establishes a second variable
         // TODO 2 : Create a function that draws a circle 
-        
+function drawCircle(){
+    circle = draw.randomCircleInArea(canvas, true, true, '#999', 2); //We temporarily store the output of the function in 'circle'
+    physikz.addRandomVelocity(circle, canvas); //we tgen use the 'physikz' library of function to add a random velocity and direction to our circle
+    view.addChild(circle); //this allows us to see the circle
+    circles.push(circle); //this saves each circle in an array
+}
 
         // TODO 3 / 7 : Call the drawCircle() function 
-
+    drawCircle();
+    drawCircle();
+    drawCircle();
+    drawCircle();
+    drawCircle();
 
         ////////////////////////////////////////////////////////////
         ///////////////// PROGRAM LOGIC ////////////////////////////
