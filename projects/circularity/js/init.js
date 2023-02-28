@@ -31,11 +31,11 @@ function drawCircle(){
 }
 
         // TODO 3 / 7 : Call the drawCircle() function 
-    drawCircle();
-    drawCircle();
-    drawCircle();
-    drawCircle();
-    drawCircle();
+    drawCircle(); //drawsCircle
+    drawCircle(); //drawsCircle
+    drawCircle(); //drawsCircle
+    drawCircle(); //drawsCircle
+    drawCircle(); //drawsCircle
 
         ////////////////////////////////////////////////////////////
         ///////////////// PROGRAM LOGIC ////////////////////////////
@@ -54,8 +54,11 @@ function drawCircle(){
             physikz.updatePosition(circles[3]);
             physikz.updatePosition(circles[4]);
             // TODO 5 / 10 : Call game.checkCirclePosition() on your circles.
-           
-
+           game.checkCirclePosition(circles[0]);
+           game.checkCirclePosition(circles[1]);
+           game.checkCirclePosition(circles[2]);
+           game.checkCirclePosition(circles[3]);
+           game.checkCirclePosition(circles[4]);
             // TODO 9 : Iterate over the array
            
             
