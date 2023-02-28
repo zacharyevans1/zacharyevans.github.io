@@ -21,7 +21,7 @@ var init = function (window) {
         
         // TODO 1 : Declare and initialize our variables
     var circle; //establishes a variable
-    var circles; //establishes a second variable
+    var circles = []; //establishes a second variable
         // TODO 2 : Create a function that draws a circle 
 function drawCircle(){
     circle = draw.randomCircleInArea(canvas, true, true, '#999', 2); //We temporarily store the output of the function in 'circle'
@@ -48,8 +48,11 @@ function drawCircle(){
         */
         function update() {
             // TODO 4 : Update the circle's position //
-
-            
+            physikz.updatePosition(circles[0]);
+            physikz.updatePosition(circles[1]);
+            physikz.updatePosition(circles[2]);
+            physikz.updatePosition(circles[3]);
+            physikz.updatePosition(circles[4]);
             // TODO 5 / 10 : Call game.checkCirclePosition() on your circles.
            
 
