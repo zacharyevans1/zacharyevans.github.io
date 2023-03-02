@@ -31,11 +31,10 @@ function drawCircle(){
 }
 
         // TODO 3 / 7 : Call the drawCircle() function 
-    drawCircle(); //drawsCircle
-    drawCircle(); //drawsCircle
-    drawCircle(); //drawsCircle
-    drawCircle(); //drawsCircle
-    drawCircle(); //drawsCircle
+    for (var loopsCompleted = 0; loopsCompleted < 100; loopsCompleted++){ //this draws 100 circles
+        var eachCircle = circles[loopsCompleted]; 
+        drawCircle();
+    }
 
         ////////////////////////////////////////////////////////////
         ///////////////// PROGRAM LOGIC ////////////////////////////
@@ -75,11 +74,14 @@ function drawCircle(){
             if ( circle.x > canvas.width ) {
                 circle.x = 0;
             }
-            
             // TODO 6 : YOUR CODE STARTS HERE //////////////////////
-            
-
-
+            else if ( circle.x < 0) {
+                circle.x = canvas.width; //this else if teleports the circle to the right side when it goes to the left.
+            }else if (circle.y > canvas.height ){
+                circle.y = 0; //this else if teleports it to the top when it reaches the bottom
+            }else if ( circle.y < 0) {
+                circle.y = canvas.height; //this teleports it to the bottom when it reaches the top
+            }
             // YOUR TODO 6 CODE ENDS HERE //////////////////////////
         }
         
