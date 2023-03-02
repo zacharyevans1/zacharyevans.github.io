@@ -13,7 +13,7 @@ var init = function (window) {
     window.opspark.makeGame = function() {
         
         window.opspark.game = {};
-        var game = window.opspark.game;
+    var game = window.opspark.game;
         
         ////////////////////////////////////////////////////////////
         ///////////////// PROGRAM SETUP ////////////////////////////
@@ -21,18 +21,17 @@ var init = function (window) {
         
         // TODO 1 : Declare and initialize our variables
     var circle; //establishes a variable
-    var circles = []; //establishes a second variable
+    var circles = []; //establishes a second variable that contains an array
         // TODO 2 : Create a function that draws a circle 
-function drawCircle(){
-    circle = draw.randomCircleInArea(canvas, true, true, '#999', 2); //We temporarily store the output of the function in 'circle'
-    physikz.addRandomVelocity(circle, canvas); //we tgen use the 'physikz' library of function to add a random velocity and direction to our circle
-    view.addChild(circle); //this allows us to see the circle
-    circles.push(circle); //this saves each circle in an array
-}
+    function drawCircle(){
+        circle = draw.randomCircleInArea(canvas, true, true, '#999', 2); //We temporarily store the output of the function in 'circle'
+        physikz.addRandomVelocity(circle, canvas); //we tgen use the 'physikz' library of function to add a random velocity and direction to our circle
+        view.addChild(circle); //this allows us to see the circle
+        circles.push(circle); //this saves each circle in an array
+    }
 
         // TODO 3 / 7 : Call the drawCircle() function 
     for (var loopsCompleted = 0; loopsCompleted < 100; loopsCompleted++){ //this draws 100 circles
-        var eachCircle = circles[loopsCompleted]; 
         drawCircle();
     }
 
@@ -46,21 +45,15 @@ function drawCircle(){
         and check to see if it has drifted off the screen.         
         */
         function update() {
-            // TODO 4 : Update the circle's position //
-            physikz.updatePosition(circles[0]);
-            physikz.updatePosition(circles[1]);
-            physikz.updatePosition(circles[2]);
-            physikz.updatePosition(circles[3]);
-            physikz.updatePosition(circles[4]);
+            // TODO 4 : Update the circle's position 
+            //we deleted these in order to go through 100 circles quickly
             // TODO 5 / 10 : Call game.checkCirclePosition() on your circles.
-           game.checkCirclePosition(circles[0]);
-           game.checkCirclePosition(circles[1]);
-           game.checkCirclePosition(circles[2]);
-           game.checkCirclePosition(circles[3]);
-           game.checkCirclePosition(circles[4]);
+         
             // TODO 9 : Iterate over the array
-           
-            
+            for (var i = 0; i < circles.length;i++){ //creates a loop to go through all circles created
+                physikz.updatePosition(circles[i]); //actually moves the circle
+                game.checkCirclePosition(circles[i]); //keeps circles on the screen
+            }
         }
     
         /* 
