@@ -113,7 +113,7 @@ var background = function (window) {
                 building.x = building.x - 1;
                 // code to do something with each element
               }
-              if (building.x < -200) {
+              if (building.x < -100) {
                 building.x = canvasWidth;
               }
 
