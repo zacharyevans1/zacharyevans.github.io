@@ -58,12 +58,12 @@ var background = function (window) {
             background.addChild(moon); //add the moon as a child to background
             
             // TODO 5: Part 1 - Add buildings!     Q: This is before TODO 4 for a reason! Why?
-            var buildingHeights = [300, 150, 175, 200, 275]; //creates a variable called buildingHeight and stores 300 as the height of the building
-            var buildingColors = ["black", "blue", "gray", "red", "green"]
+            var buildingHeights = [300, 150, 175, 200, 275]; //creates an array called buildingHeight and stores them in the variable buildingHeight
+            var buildingColors = ["black", "blue", "gray", "red", "green"] //created an array of colors and stored them in the variable buildingColors
             var building;
             for (var i = 0; i < buildingHeights.length; i++) { 
 
-                building = draw.rect(75, buildingHeights[i], buildingColors[i], "Black", 1); //draws a rectangle and store it in the variable building
+                building = draw.rect(75, buildingHeights[i], buildingColors[i], "Black", i); //draws a rectangle and store it in the variable building
                 building.x = 200 * i; //Multiplies 200 times the current iteration of the loop so that the buildings are 200 pixels apart and stores it as the x value of the building
                 building.y = groundY - buildingHeights[i]; //subtracts buildingHeight from groundY and sets it as the y value
                 background.addChild(building); //adds the building as a child to the background
@@ -101,20 +101,21 @@ var background = function (window) {
             var groundY = ground.y;
             
             // TODO 4: Part 2 - Move the tree!
-            tree.x = tree.x - 2;
+            tree.x = tree.x - 2; //takes the current x position of the tree and subtracts from the current x position to move left and reassigns it to the tree.x position 
             
+            //check if the tree has moved off the canvas and if it has it resets it to the right side of the canvas
             if (tree.x < -200) {
-            tree.x = canvasWidth;
+                tree.x = canvasWidth;
             }
             
             // TODO 5: Part 2 - Parallax
+            //loops through the buildings array to accesseach index of the array, move it, and check its position on the canvas and resets to the right side if it goes off the left
             for (var i = 0; i < buildings.length; i++) {
                 var building = buildings[i];
-                building.x = building.x - 1;
-                // code to do something with each element
-              }
-              if (building.x < -100) {
-                building.x = canvasWidth;
+                building.x = building.x - 1; //moves the building
+                
+              if (building.x < -100) //checks the position of the building
+                building.x = canvasWidth; //resets the building to the right side of the canvas
               }
 
         } // end of update function - DO NOT DELETE
