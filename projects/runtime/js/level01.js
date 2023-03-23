@@ -40,6 +40,7 @@ var level01 = function (window) {
             sawBladeHitZone.addChild(obstacleImage); //adds obstacleImage as a child of the sawBladeHitZone
             obstacleImage.x = -25 //modify the x value of the image to line up with the hitzone
             obstacleImage.y = -25 //modify the y value of the image to line up with the hitzone
+            sawBladeHitZone.rotationalVelocity = -15; //rotates the sawblades
         }
 
         function createSpikes(x, y){
@@ -59,6 +60,48 @@ var level01 = function (window) {
         createSawBlade(600, groundY - 100);
         createSawBlade(800, groundY);
 
+        function createEnemy(x, y){
+            var enemy = game.createGameItem("enemy", 25);
+            var redSquare = draw.rect(50, 50, "red");
+            redSquare.x = -25;
+            redSquare.y = -25;
+            enemy.addChild(redSquare);
+            enemy.x = 400;
+            enemy.y = groundY - 50;
+            game.addGameItem(enemy);
+            enemy.velocityX = -1;
+            enemy.rotationalVelocity = 1;
+            enemy.onPlayerCollision = function () {
+                game.changeIntegrity(-10);
+            }
+            enemy.onProjectileCollision = function () {
+                game.increaseScore(100);
+                game.changeIntegrity(10);
+                enemy.fadeOut();
+            }
+        }   
+
+        createEnemy(400, groundY - 50, -1.5, 'red', -10);
+
+        function createReward(x, y){
+           var reward = game.createGameItem("reward", 25);
+           var blueSquare = draw.rect(50, 50, "blue");
+           blueSquare.x = -25;
+           blueSquare.y = -25;
+           reward.addChild(blueSquare);
+           reward.x = 400;
+           reward.y = groundY - 50;
+           game.addGameItem(reward);
+           reward.velocityX = -1;
+           reward.rotationalVelocity = 1;
+           reward.onProjectileCollision = function () {
+               game.increaseScore(50);
+               game.changeIntegrity(50);
+               reward.fadeOut();
+           }
+       }   
+
+       createReward(500, groundY - 50);
         // DO NOT EDIT CODE BELOW HERE
     }
 };
