@@ -16,9 +16,14 @@ var level01 = function (window) {
             "number": 1, 
             "speed": -3,
             "gameItems": [
-                { "type": "sawblade", "x": 400, "y": groundY },
-                { "type": "sawblade", "x": 600, "y": groundY },
-                { "type": "sawblade", "x": 900, "y": groundY },
+                { "type": "sawblade", "x": 400, "y": groundY -10 },
+                { "type": "sawblade", "x": 600, "y": groundY -10 },
+                { "type": "sawblade", "x": 800, "y": groundY -110},
+                { "type": "sawblade", "x": 1000, "y": groundY -110},
+                
+                { "type": "enemy", "x": 1000, "y": groundY -50},
+
+                { "type": "reward", "x": 500, "y": groundY -50},
             ]
         };
         window.levelData = levelData;
@@ -56,44 +61,39 @@ var level01 = function (window) {
             obstacleImage.y = -25 //modify the y value of the image to line up with the hitzone
         }
 
-        createSawBlade(400, groundY - 100);
-        createSawBlade(600, groundY - 100);
-        createSawBlade(800, groundY);
-
         function createEnemy(x, y){
-            var enemy = game.createGameItem("enemy", 25);
-            var redSquare = draw.rect(50, 50, "red");
-            redSquare.x = -25;
-            redSquare.y = -25;
-            enemy.addChild(redSquare);
-            enemy.x = 400;
-            enemy.y = groundY - 50;
-            game.addGameItem(enemy);
-            enemy.velocityX = -1;
-            enemy.rotationalVelocity = 1;
+            var enemy = game.createGameItem("enemy", 25); //create the gameItem and store it the the variable enemy
+            var redSquare = draw.rect(50, 50, "red"); //draws a rectangle and stores it in the gameItem variable
+            redSquare.x = -25; //stores a value as the x value of the gameItem
+            redSquare.y = -25; //stores a value as the y value of the gameItem
+            enemy.addChild(redSquare); //adds the gameItem as a child of enemy
+            enemy.x = 400; //stores the value passed as the x argument as enemy's x value
+            enemy.y = groundY - 50; //stores the value passed as the y argument as enemy's y value
+            game.addGameItem(enemy); //adds the enemy as an item to the game
+            enemy.velocityX = -1; //assigns a value to the velocityX of the enemy to make it move
+            enemy.rotationalVelocity = 1; //rotates the enemy
+
             enemy.onPlayerCollision = function () {
-                game.changeIntegrity(-10);
+                game.changeIntegrity(-10); //subtracts from the health when Halle collides with the enemy
             }
             enemy.onProjectileCollision = function () {
-                game.increaseScore(100);
-                game.changeIntegrity(10);
-                enemy.fadeOut();
+                game.increaseScore(100); //increases the score when Halle shoots the enemy
+                game.changeIntegrity(10); //add 10 to Hall health 
+                enemy.fadeOut(); //enemy fades out when Halle shoots it
             }
         }   
-
-        createEnemy(400, groundY - 50, -1.5, 'red', -10);
 
         function createReward(x, y){
            var reward = game.createGameItem("reward", 25);
            var blueSquare = draw.rect(50, 50, "blue");
-           blueSquare.x = -25;
+           blueSquare.x = 200;
            blueSquare.y = -25;
            reward.addChild(blueSquare);
            reward.x = 400;
            reward.y = groundY - 50;
            game.addGameItem(reward);
            reward.velocityX = -1;
-           reward.rotationalVelocity = 1;
+
            reward.onProjectileCollision = function () {
                game.increaseScore(50);
                game.changeIntegrity(50);
@@ -101,7 +101,22 @@ var level01 = function (window) {
            }
        }   
 
-       createReward(500, groundY - 50);
+       //loop for gameItems
+       for (var i = 0; i < levelData.gameItems.length; i++){
+            var gameItem = levelData.gameItems[i]; //assigns the current index of the gameItems array to the variable gameItem
+            
+            if (gameItem.type === "sawblade"){ //checks the type of the game item
+                createSawBlade(gameItem.x, gameItem.y); //if the type is true, it executes createSawBlade
+            }
+            if (gameItem.type === "enemy"){ //checks the type of the game item
+                createEnemy(gameItem.x, gameItem.y); //if the type is true, it executes createEnemy
+            }
+            if (gameItem.type === "reward"){ //checks the type of the game item
+                createReward(gameItem.x, gameItem.y); //if the type is true, it executes createReward
+            }
+       }
+       
+
         // DO NOT EDIT CODE BELOW HERE
     }
 };
