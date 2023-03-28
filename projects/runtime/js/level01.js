@@ -21,7 +21,7 @@ var level01 = function (window) {
                 { "type": "sawblade", "x": 800, "y": groundY -110},
                 { "type": "sawblade", "x": 1000, "y": groundY -110},
                 
-                { "type": "enemy", "x": 1000, "y": groundY -50},
+                { "type": "enemy", hitboxX: -50, hitboxY: -50, "x": 1000, "y": groundY -150, scaleX: 0.1, scaleY: 0.1},
 
                 { "type": "reward", "x": 500, "y": groundY -50},
             ]
@@ -61,16 +61,18 @@ var level01 = function (window) {
             obstacleImage.y = -25 //modify the y value of the image to line up with the hitzone
         }
 
-        function createEnemy(x, y){
+        function createEnemy(hitboxX,hitboxY, x, y, scaleX, scaleY,){
             var enemy = game.createGameItem("enemy", 25); //create the gameItem and store it the the variable enemy
             var redSquare = draw.bitmap("img/Caustic.png"); //draws an image pulled from the img file
-            redSquare.x = -25; //stores a value as the x value of the gameItem
-            redSquare.y = -25; //stores a value as the y value of the gameItem
+            redSquare.x = hitboxX; //stores a value as the x value of the gameItem
+            redSquare.y = hitboxY; //stores a value as the y value of the gameItem
             enemy.addChild(redSquare); //adds the gameItem as a child of enemy
-            enemy.x = 400; //stores the value passed as the x argument as enemy's x value
-            enemy.y = groundY - 50; //stores the value passed as the y argument as enemy's y value
+            enemy.x = x; //stores the value passed as the x argument as enemy's x value
+            enemy.y = y; //stores the value passed as the y argument as enemy's y value
             game.addGameItem(enemy); //adds the enemy as an item to the game
             enemy.velocityX = -1; //assigns a value to the velocityX of the enemy to make it move
+            redSquare.scaleX = scaleX;
+            redSquare.scaleY = scaleY;
 
             enemy.onPlayerCollision = function () {
                 game.changeIntegrity(-10); //subtracts from the health when Halle collides with the enemy
@@ -108,7 +110,7 @@ var level01 = function (window) {
                 createSawBlade(gameItem.x, gameItem.y); //if the type is true, it executes createSawBlade
             }
             if (gameItem.type === "enemy"){ //checks the type of the game item
-                createEnemy(gameItem.x, gameItem.y); //if the type is true, it executes createEnemy
+                createEnemy(gameItem.hitboxX, gameItem.hitboxY, gameItem.x, gameItem.y, gameItem.scaleX, gameItem.scaleY); //if the type is true, it executes createEnemy
             }
             if (gameItem.type === "reward"){ //checks the type of the game item
                 createReward(gameItem.x, gameItem.y); //if the type is true, it executes createReward
