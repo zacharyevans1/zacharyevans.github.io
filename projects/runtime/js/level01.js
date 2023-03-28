@@ -63,7 +63,7 @@ var level01 = function (window) {
 
         function createEnemy(x, y){
             var enemy = game.createGameItem("enemy", 25); //create the gameItem and store it the the variable enemy
-            var redSquare = draw.rect(50, 50, "red"); //draws a rectangle and stores it in the gameItem variable
+            var redSquare = draw.bitmap("img/Caustic.png"); //draws an image pulled from the img file
             redSquare.x = -25; //stores a value as the x value of the gameItem
             redSquare.y = -25; //stores a value as the y value of the gameItem
             enemy.addChild(redSquare); //adds the gameItem as a child of enemy
@@ -71,7 +71,6 @@ var level01 = function (window) {
             enemy.y = groundY - 50; //stores the value passed as the y argument as enemy's y value
             game.addGameItem(enemy); //adds the enemy as an item to the game
             enemy.velocityX = -1; //assigns a value to the velocityX of the enemy to make it move
-            enemy.rotationalVelocity = 1; //rotates the enemy
 
             enemy.onPlayerCollision = function () {
                 game.changeIntegrity(-10); //subtracts from the health when Halle collides with the enemy
