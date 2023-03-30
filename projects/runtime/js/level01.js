@@ -20,6 +20,7 @@ var level01 = function (window) {
                 { "type": "sawblade", "x": 600, "y": groundY -10 },
                 { "type": "sawblade", "x": 800, "y": groundY -110},
                 { "type": "sawblade", "x": 1000, "y": groundY -110},
+                { "type": "sawblade", "x": 1650, "y": groundY -10},
                 
                 { "type": "enemy", hitBoxSize: 35, hitboxX: -65, hitboxY: -70, "x": 1000, "y": groundY - 70, scaleX: 0.1, scaleY: 0.1},
                 { "type": "enemy2", hitBoxSize: 35, hitboxX: -35, hitboxY: -100, "x": 2500, "y": groundY - 70, scaleX: 0.3, scaleY: 0.3},
