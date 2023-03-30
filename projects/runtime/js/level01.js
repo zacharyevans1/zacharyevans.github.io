@@ -21,9 +21,10 @@ var level01 = function (window) {
                 { "type": "sawblade", "x": 800, "y": groundY -110},
                 { "type": "sawblade", "x": 1000, "y": groundY -110},
                 
-                { "type": "enemy", hitboxX: -50, hitboxY: -50, "x": 1000, "y": groundY -150, scaleX: 0.1, scaleY: 0.1},
+                { "type": "enemy", hitBoxSize: 35, hitboxX: -65, hitboxY: -70, "x": 1000, "y": groundY - 70, scaleX: 0.1, scaleY: 0.1},
+                { "type": "enemy2", hitBoxSize: 35, hitboxX: -35, hitboxY: -100, "x": 2500, "y": groundY - 70, scaleX: 0.3, scaleY: 0.3},
 
-                { "type": "reward", "x": 500, "y": groundY -50},
+                { "type": "reward", "x": 1500, "y": groundY -50},
             ]
         };
         window.levelData = levelData;
@@ -41,13 +42,15 @@ var level01 = function (window) {
             sawBladeHitZone.x = x; //assigns the x value using the argument passed as the x parameter
             sawBladeHitZone.y = y; //assigns the y value using the argument passed as the y parameter
             game.addGameItem(sawBladeHitZone); //adds the hitzone to the game
-            var obstacleImage = draw.bitmap("img/sawblade.png"); //draws the image as a bitmap and stores it to the variable obstacleImage
+            var obstacleImage = draw.bitmap("img/Arc Star.png"); //draws the image as a bitmap and stores it to the variable obstacleImage
             sawBladeHitZone.addChild(obstacleImage); //adds obstacleImage as a child of the sawBladeHitZone
-            obstacleImage.x = -25 //modify the x value of the image to line up with the hitzone
-            obstacleImage.y = -25 //modify the y value of the image to line up with the hitzone
+            obstacleImage.x = -55 //modify the x value of the image to line up with the hitzone
+            obstacleImage.y = -35 //modify the y value of the image to line up with the hitzone
             sawBladeHitZone.rotationalVelocity = -15; //rotates the sawblades
+            obstacleImage.scaleX = 0.1;
+            obstacleImage.scaleY = 0.1;
         }
-
+/*
         function createSpikes(x, y){
             var hitZoneSize = 25; //the size of the hitzone assigned to the variable hitZoneSize
             var damageFromObstacle = 10; //sets the damage amount and assigns to a variable called damageFromObstacle
@@ -60,9 +63,11 @@ var level01 = function (window) {
             obstacleImage.x = -25 //modify the x value of the image to line up with the hitzone
             obstacleImage.y = -25 //modify the y value of the image to line up with the hitzone
         }
+*/
 
-        function createEnemy(hitboxX,hitboxY, x, y, scaleX, scaleY,){
-            var enemy = game.createGameItem("enemy", 25); //create the gameItem and store it the the variable enemy
+        //Caustic
+        function createEnemy(hitBoxSize, hitboxX,hitboxY, x, y, scaleX, scaleY,){
+            var enemy = game.createGameItem("enemy", hitBoxSize); //create the gameItem and store it the the variable enemy
             var redSquare = draw.bitmap("img/Caustic.png"); //draws an image pulled from the img file
             redSquare.x = hitboxX; //stores a value as the x value of the gameItem
             redSquare.y = hitboxY; //stores a value as the y value of the gameItem
@@ -84,14 +89,86 @@ var level01 = function (window) {
             }
         }   
 
+        //Octane
+        function createEnemy2(hitBoxSize, hitboxX,hitboxY, x, y, scaleX, scaleY,){
+            var enemy = game.createGameItem("enemy2", hitBoxSize); //create the gameItem and store it the the variable enemy
+            var redSquare = draw.bitmap("img/Octane.png"); //draws an image pulled from the img file
+            redSquare.x = hitboxX; //stores a value as the x value of the gameItem
+            redSquare.y = hitboxY; //stores a value as the y value of the gameItem
+            enemy.addChild(redSquare); //adds the gameItem as a child of enemy
+            enemy.x = x; //stores the value passed as the x argument as enemy's x value
+            enemy.y = y; //stores the value passed as the y argument as enemy's y value
+            game.addGameItem(enemy); //adds the enemy as an item to the game
+            enemy.velocityX = -5; //assigns a value to the velocityX of the enemy to make it move
+            redSquare.scaleX = scaleX;
+            redSquare.scaleY = scaleY;
+
+            enemy.onPlayerCollision = function () {
+                game.changeIntegrity(-40); //subtracts from the health when Halle collides with the enemy
+            }
+            enemy.onProjectileCollision = function () {
+                game.increaseScore(100); //increases the score when Halle shoots the enemy
+                game.changeIntegrity(10); //add 10 to Hall health 
+                enemy.fadeOut(); //enemy fades out when Halle shoots it
+            }
+        }   
+
+        //Ash
+        function createEnemy3(hitBoxSize, hitboxX,hitboxY, x, y, scaleX, scaleY,){
+            var enemy = game.createGameItem("enemy3", hitBoxSize); //create the gameItem and store it the the variable enemy
+            var redSquare = draw.bitmap("img/Ash.png"); //draws an image pulled from the img file
+            redSquare.x = hitboxX; //stores a value as the x value of the gameItem
+            redSquare.y = hitboxY; //stores a value as the y value of the gameItem
+            enemy.addChild(redSquare); //adds the gameItem as a child of enemy
+            enemy.x = x; //stores the value passed as the x argument as enemy's x value
+            enemy.y = y; //stores the value passed as the y argument as enemy's y value
+            game.addGameItem(enemy); //adds the enemy as an item to the game
+            enemy.velocityX = -5; //assigns a value to the velocityX of the enemy to make it move
+            redSquare.scaleX = scaleX;
+            redSquare.scaleY = scaleY;
+
+            enemy.onPlayerCollision = function () {
+                game.changeIntegrity(-30); //subtracts from the health when Halle collides with the enemy
+            }
+            enemy.onProjectileCollision = function () {
+                game.increaseScore(100); //increases the score when Halle shoots the enemy
+                game.changeIntegrity(10); //add 10 to Hall health 
+                enemy.fadeOut(); //enemy fades out when Halle shoots it
+            }
+        }   
+
+        //Revenant
+        function createEnemy4(hitBoxSize, hitboxX,hitboxY, x, y, scaleX, scaleY,){
+            var enemy = game.createGameItem("enemy4", hitBoxSize); //create the gameItem and store it the the variable enemy
+            var redSquare = draw.bitmap("img/Revenant.png"); //draws an image pulled from the img file
+            redSquare.x = hitboxX; //stores a value as the x value of the gameItem
+            redSquare.y = hitboxY; //stores a value as the y value of the gameItem
+            enemy.addChild(redSquare); //adds the gameItem as a child of enemy
+            enemy.x = x; //stores the value passed as the x argument as enemy's x value
+            enemy.y = y; //stores the value passed as the y argument as enemy's y value
+            game.addGameItem(enemy); //adds the enemy as an item to the game
+            enemy.velocityX = -5; //assigns a value to the velocityX of the enemy to make it move
+            redSquare.scaleX = scaleX;
+            redSquare.scaleY = scaleY;
+
+            enemy.onPlayerCollision = function () {
+                game.changeIntegrity(-100); //subtracts from the health when Halle collides with the enemy
+            }
+            enemy.onProjectileCollision = function () {
+                game.increaseScore(100); //increases the score when Halle shoots the enemy
+                game.changeIntegrity(10); //add 10 to Hall health 
+                enemy.fadeOut(); //enemy fades out when Halle shoots it
+            }
+        }   
+
         function createReward(x, y){
            var reward = game.createGameItem("reward", 25);
            var blueSquare = draw.rect(50, 50, "blue");
-           blueSquare.x = 200;
+           blueSquare.x = -25;
            blueSquare.y = -25;
            reward.addChild(blueSquare);
-           reward.x = 400;
-           reward.y = groundY - 50;
+           reward.x = x;
+           reward.y = y;
            game.addGameItem(reward);
            reward.velocityX = -1;
 
@@ -110,13 +187,22 @@ var level01 = function (window) {
                 createSawBlade(gameItem.x, gameItem.y); //if the type is true, it executes createSawBlade
             }
             if (gameItem.type === "enemy"){ //checks the type of the game item
-                createEnemy(gameItem.hitboxX, gameItem.hitboxY, gameItem.x, gameItem.y, gameItem.scaleX, gameItem.scaleY); //if the type is true, it executes createEnemy
+                createEnemy(gameItem.hitBoxSize, gameItem.hitboxX, gameItem.hitboxY, gameItem.x, gameItem.y, gameItem.scaleX, gameItem.scaleY); //if the type is true, it executes createEnemy
+            }
+            if (gameItem.type === "enemy2"){ //checks the type of the game item
+                createEnemy2(gameItem.hitBoxSize, gameItem.hitboxX, gameItem.hitboxY, gameItem.x, gameItem.y, gameItem.scaleX, gameItem.scaleY); //if the type is true, it executes createEnemy
+            }
+            if (gameItem.type === "enemy3"){ //checks the type of the game item
+                createEnemy2(gameItem.hitBoxSize, gameItem.hitboxX, gameItem.hitboxY, gameItem.x, gameItem.y, gameItem.scaleX, gameItem.scaleY); //if the type is true, it executes createEnemy
+            }
+            if (gameItem.type === "enemy4"){ //checks the type of the game item
+                createEnemy2(gameItem.hitBoxSize, gameItem.hitboxX, gameItem.hitboxY, gameItem.x, gameItem.y, gameItem.scaleX, gameItem.scaleY); //if the type is true, it executes createEnemy
             }
             if (gameItem.type === "reward"){ //checks the type of the game item
                 createReward(gameItem.x, gameItem.y); //if the type is true, it executes createReward
             }
        }
-       
+
 
         // DO NOT EDIT CODE BELOW HERE
     }
