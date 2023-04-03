@@ -228,6 +228,27 @@ var level01 = function (window) {
         }
     }   
 
+    //
+    function createReward4(x, y, scaleX, scaleY){
+        var reward = game.createGameItem("reward2", 25);
+        var blueSquare = draw.bitmap("img/");
+        blueSquare.x = -135;
+        blueSquare.y = -60;
+        reward.addChild(blueSquare);
+        reward.x = x;
+        reward.y = y;
+        game.addGameItem(reward);
+        reward.velocityX = -1;
+        blueSquare.scaleX = scaleX;
+        blueSquare.scaleY = scaleY;
+
+        reward.onProjectileCollision = function () {
+            game.increaseScore(100);
+            game.changeIntegrity(50);
+            reward.fadeOut();
+        }
+    }   
+
     
 
        //loop for gameItems
