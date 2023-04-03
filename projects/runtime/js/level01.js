@@ -25,7 +25,10 @@ var level01 = function (window) {
                 { "type": "enemy", hitBoxSize: 35, hitboxX: -65, hitboxY: -70, "x": 1000, "y": groundY - 70, scaleX: 0.1, scaleY: 0.1},
                 { "type": "enemy2", hitBoxSize: 35, hitboxX: -35, hitboxY: -100, "x": 2500, "y": groundY - 70, scaleX: 0.3, scaleY: 0.3},
 
-                { "type": "reward", "x": 1500, "y": groundY -50},
+                { "type": "reward", "x": 1500, "y": groundY -50, "scaleX": 0.125, "scaleY":0.125},
+                { "type": "reward2", "x": 4000, "y": groundY -50, "scaleX": 0.125, "scaleY":0.125},
+                { "type": "reward3", "x": 1500, "y": groundY -50, "scaleX": 0.125, "scaleY":0.125},
+                { "type": "reward4", "x": 1500, "y": groundY -50, "scaleX": 0.125, "scaleY":0.125},
             ]
         };
         window.levelData = levelData;
@@ -81,11 +84,11 @@ var level01 = function (window) {
             redSquare.scaleY = scaleY;
 
             enemy.onPlayerCollision = function () {
-                game.changeIntegrity(-10); //subtracts from the health when Halle collides with the enemy
+                game.changeIntegrity(-30); //subtracts from the health when Halle collides with the enemy
             }
             enemy.onProjectileCollision = function () {
                 game.increaseScore(100); //increases the score when Halle shoots the enemy
-                game.changeIntegrity(10); //add 10 to Hall health 
+                game.changeIntegrity(0); //add 10 to Hall health 
                 enemy.fadeOut(); //enemy fades out when Halle shoots it
             }
         }   
@@ -105,11 +108,11 @@ var level01 = function (window) {
             redSquare.scaleY = scaleY;
 
             enemy.onPlayerCollision = function () {
-                game.changeIntegrity(-40); //subtracts from the health when Halle collides with the enemy
+                game.changeIntegrity(-20); //subtracts from the health when Halle collides with the enemy
             }
             enemy.onProjectileCollision = function () {
-                game.increaseScore(100); //increases the score when Halle shoots the enemy
-                game.changeIntegrity(10); //add 10 to Hall health 
+                game.increaseScore(200); //increases the score when Halle shoots the enemy
+                game.changeIntegrity(0); //add 10 to Hall health 
                 enemy.fadeOut(); //enemy fades out when Halle shoots it
             }
         }   
@@ -129,11 +132,11 @@ var level01 = function (window) {
             redSquare.scaleY = scaleY;
 
             enemy.onPlayerCollision = function () {
-                game.changeIntegrity(-30); //subtracts from the health when Halle collides with the enemy
+                game.changeIntegrity(-50); //subtracts from the health when Halle collides with the enemy
             }
             enemy.onProjectileCollision = function () {
-                game.increaseScore(100); //increases the score when Halle shoots the enemy
-                game.changeIntegrity(10); //add 10 to Hall health 
+                game.increaseScore(500); //increases the score when Halle shoots the enemy
+                game.changeIntegrity(0); //add 10 to Hall health 
                 enemy.fadeOut(); //enemy fades out when Halle shoots it
             }
         }   
@@ -153,32 +156,79 @@ var level01 = function (window) {
             redSquare.scaleY = scaleY;
 
             enemy.onPlayerCollision = function () {
-                game.changeIntegrity(-100); //subtracts from the health when Halle collides with the enemy
+                game.changeIntegrity(-100000); //subtracts from the health when Halle collides with the enemy
             }
             enemy.onProjectileCollision = function () {
-                game.increaseScore(100); //increases the score when Halle shoots the enemy
-                game.changeIntegrity(10); //add 10 to Hall health 
+                game.increaseScore(1000); //increases the score when Halle shoots the enemy
+                game.changeIntegrity(0); //add 10 to Hall health 
                 enemy.fadeOut(); //enemy fades out when Halle shoots it
             }
         }   
 
-        function createReward(x, y){
+        //Shield Battery
+        function createReward(x, y, scaleX, scaleY){
            var reward = game.createGameItem("reward", 25);
-           var blueSquare = draw.rect(50, 50, "blue");
-           blueSquare.x = -25;
-           blueSquare.y = -25;
+           var blueSquare = draw.bitmap("img/Shield Bat.png");
+           blueSquare.x = -60;
+           blueSquare.y = -60;
            reward.addChild(blueSquare);
            reward.x = x;
            reward.y = y;
            game.addGameItem(reward);
            reward.velocityX = -1;
+           blueSquare.scaleX = scaleX;
+           blueSquare.scaleY = scaleY;
 
            reward.onProjectileCollision = function () {
-               game.increaseScore(50);
+               game.increaseScore(100);
                game.changeIntegrity(50);
                reward.fadeOut();
            }
        }   
+
+       //Pheonix Kit
+       function createReward2(x, y, scaleX, scaleY){
+        var reward = game.createGameItem("reward2", 25);
+        var blueSquare = draw.bitmap("img/Pheonix Kit.png");
+        blueSquare.x = -135;
+        blueSquare.y = -60;
+        reward.addChild(blueSquare);
+        reward.x = x;
+        reward.y = y;
+        game.addGameItem(reward);
+        reward.velocityX = -1;
+        blueSquare.scaleX = scaleX;
+        blueSquare.scaleY = scaleY;
+
+        reward.onProjectileCollision = function () {
+            game.increaseScore(200);
+            game.changeIntegrity(100);
+            reward.fadeOut();
+        }
+    }   
+
+    //Med Kit
+    function createReward3(x, y, scaleX, scaleY){
+        var reward = game.createGameItem("reward2", 25);
+        var blueSquare = draw.bitmap("img/Med Kit.png");
+        blueSquare.x = -135;
+        blueSquare.y = -60;
+        reward.addChild(blueSquare);
+        reward.x = x;
+        reward.y = y;
+        game.addGameItem(reward);
+        reward.velocityX = -1;
+        blueSquare.scaleX = scaleX;
+        blueSquare.scaleY = scaleY;
+
+        reward.onProjectileCollision = function () {
+            game.increaseScore(100);
+            game.changeIntegrity(50);
+            reward.fadeOut();
+        }
+    }   
+
+    
 
        //loop for gameItems
        for (var i = 0; i < levelData.gameItems.length; i++){
@@ -200,7 +250,16 @@ var level01 = function (window) {
                 createEnemy2(gameItem.hitBoxSize, gameItem.hitboxX, gameItem.hitboxY, gameItem.x, gameItem.y, gameItem.scaleX, gameItem.scaleY); //if the type is true, it executes createEnemy
             }
             if (gameItem.type === "reward"){ //checks the type of the game item
-                createReward(gameItem.x, gameItem.y); //if the type is true, it executes createReward
+                createReward(gameItem.x, gameItem.y, gameItem.scaleX, gameItem.scaleY); //if the type is true, it executes createReward
+            }
+            if (gameItem.type === "reward2"){ //checks the type of the game item
+                createReward2(gameItem.x, gameItem.y, gameItem.scaleX, gameItem.scaleY); //if the type is true, it executes createReward
+            }
+            if (gameItem.type === "reward3"){ //checks the type of the game item
+                createReward3(gameItem.x, gameItem.y, gameItem.scaleX, gameItem.scaleY); //if the type is true, it executes createReward
+            }
+            if (gameItem.type === "reward4"){ //checks the type of the game item
+                createReward4(gameItem.x, gameItem.y, gameItem.scaleX, gameItem.scaleY); //if the type is true, it executes createReward
             }
        }
 
