@@ -35,6 +35,9 @@ var level01 = function (window) {
                 { "type": "sawblade", "x": 2900, "y": groundY -110},
                 { "type": "sawblade", "x": 2950, "y": groundY -110},
                 { "type": "sawblade", "x": 3000, "y": groundY -110},
+
+                { "type": "portal", "x": 3500, "y": groundY -20 },
+                { "type": "portal", "x": 1299, "y": groundY -20 },
                 
                 { "type": "enemy", hitBoxSize: 35, hitboxX: -65, hitboxY: -70, "x": 1000, "y": groundY - 70, scaleX: 0.1, scaleY: 0.1},
                 { "type": "enemy2", hitBoxSize: 35, hitboxX: -35, hitboxY: -100, "x": 2500, "y": groundY - 70, scaleX: 0.3, scaleY: 0.3},
@@ -75,6 +78,23 @@ var level01 = function (window) {
             sawBladeHitZone.rotationalVelocity = -15; //rotates the sawblades
             obstacleImage.scaleX = 0.1;
             obstacleImage.scaleY = 0.1;
+            
+        }
+
+        //Portal Obstacle       ///fix hitbox///
+        function createPortal(x, y){
+            var hitZoneSize = 25; //the size of the hitzone assigned to the variable hitZoneSize
+            var damageFromObstacle = 20; //sets the damage amount and assigns to a variable called damageFromObstacle
+            var sawBladeHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); //creates the obstacle and assigns it to sawBladeHitZone
+            sawBladeHitZone.x = x; //assigns the x value using the argument passed as the x parameter
+            sawBladeHitZone.y = y; //assigns the y value using the argument passed as the y parameter
+            game.addGameItem(sawBladeHitZone); //adds the hitzone to the game
+            var obstacleImage = draw.bitmap("img/Wraith Portal.png"); //draws the image as a bitmap and stores it to the variable obstacleImage
+            sawBladeHitZone.addChild(obstacleImage); //adds obstacleImage as a child of the sawBladeHitZone
+            obstacleImage.x = -70 //modify the x value of the image to line up with the hitzone
+            obstacleImage.y = -200 //modify the y value of the image to line up with the hitzone
+            obstacleImage.scaleX = 0.5;
+            obstacleImage.scaleY = 0.5;
             
         }
 /*
@@ -280,6 +300,9 @@ var level01 = function (window) {
             
             if (gameItem.type === "sawblade"){ //checks the type of the game item
                 createSawBlade(gameItem.x, gameItem.y); //if the type is true, it executes createSawBlade
+            }
+            if (gameItem.type === "portal"){ //checks the type of the game item
+                createPortal(gameItem.x, gameItem.y); //if the type is true, it executes createPortal
             }
             if (gameItem.type === "enemy"){ //checks the type of the game item
                 createEnemy(gameItem.hitBoxSize, gameItem.hitboxX, gameItem.hitboxY, gameItem.x, gameItem.y, gameItem.scaleX, gameItem.scaleY); //if the type is true, it executes createEnemy
