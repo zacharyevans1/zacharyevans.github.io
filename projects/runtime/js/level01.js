@@ -21,14 +21,36 @@ var level01 = function (window) {
                 { "type": "sawblade", "x": 800, "y": groundY -110},
                 { "type": "sawblade", "x": 1000, "y": groundY -110},
                 { "type": "sawblade", "x": 1650, "y": groundY -10},
+                { "type": "sawblade", "x": 1800, "y": groundY -10},
+                { "type": "sawblade", "x": 1900, "y": groundY -110},
+                { "type": "sawblade", "x": 2000, "y": groundY -10},
+                { "type": "sawblade", "x": 2500, "y": groundY -110},
+                { "type": "sawblade", "x": 2550, "y": groundY -110},
+                { "type": "sawblade", "x": 2600, "y": groundY -110},
+                { "type": "sawblade", "x": 2650, "y": groundY -110},
+                { "type": "sawblade", "x": 2700, "y": groundY -110},
+                { "type": "sawblade", "x": 2750, "y": groundY -110},
+                { "type": "sawblade", "x": 2800, "y": groundY -110},
+                { "type": "sawblade", "x": 2850, "y": groundY -110},
+                { "type": "sawblade", "x": 2900, "y": groundY -110},
+                { "type": "sawblade", "x": 2950, "y": groundY -110},
+                { "type": "sawblade", "x": 3000, "y": groundY -110},
                 
                 { "type": "enemy", hitBoxSize: 35, hitboxX: -65, hitboxY: -70, "x": 1000, "y": groundY - 70, scaleX: 0.1, scaleY: 0.1},
                 { "type": "enemy2", hitBoxSize: 35, hitboxX: -35, hitboxY: -100, "x": 2500, "y": groundY - 70, scaleX: 0.3, scaleY: 0.3},
+                { "type": "enemy2", hitBoxSize: 35, hitboxX: -35, hitboxY: -100, "x": 6000, "y": groundY - 70, scaleX: 0.3, scaleY: 0.3},
+                { "type": "enemy3", hitBoxSize: 35, hitboxX: -65, hitboxY: -70, "x": 4500, "y": groundY - 70, scaleX: 0.1, scaleY: 0.1},
+                { "type": "enemy4", hitBoxSize: 35, hitboxX: -160, hitboxY: -70, "x": 10000, "y": groundY - 70, scaleX: 0.25, scaleY: 0.25},
+                { "type": "enemy4", hitBoxSize: 35, hitboxX: -160, hitboxY: -70, "x": 20000, "y": groundY - 70, scaleX: 0.25, scaleY: 0.25},
+                { "type": "enemy4", hitBoxSize: 35, hitboxX: -160, hitboxY: -70, "x": 30000, "y": groundY - 70, scaleX: 0.25, scaleY: 0.25},
+                { "type": "enemy4", hitBoxSize: 35, hitboxX: -160, hitboxY: -70, "x": 35000, "y": groundY - 70, scaleX: 0.25, scaleY: 0.25},
+                { "type": "enemy4", hitBoxSize: 35, hitboxX: -160, hitboxY: -70, "x": 36000, "y": groundY - 70, scaleX: 0.25, scaleY: 0.25},
+                { "type": "enemy4", hitBoxSize: 35, hitboxX: -160, hitboxY: -70, "x": 36599, "y": groundY - 70, scaleX: 0.25, scaleY: 0.25},
 
                 { "type": "reward", "x": 1500, "y": groundY -50, "scaleX": 0.125, "scaleY":0.125},
-                { "type": "reward2", "x": 4000, "y": groundY -50, "scaleX": 0.125, "scaleY":0.125},
-                { "type": "reward3", "x": 1500, "y": groundY -50, "scaleX": 0.125, "scaleY":0.125},
-                { "type": "reward4", "x": 1500, "y": groundY -50, "scaleX": 0.125, "scaleY":0.125},
+                { "type": "reward2", "x": 5500, "y": groundY -50, "scaleX": 0.125, "scaleY":0.125},
+                { "type": "reward3", "x": 3000, "y": groundY -25, "scaleX": 0.125, "scaleY":0.125},
+                { "type": "reward4", "x": 2200, "y": groundY -20, "scaleX": 0.06, "scaleY":0.06},
             ]
         };
         window.levelData = levelData;
@@ -41,7 +63,7 @@ var level01 = function (window) {
         //creates a sawblade at any given x and y value
         function createSawBlade(x, y){
             var hitZoneSize = 25; //the size of the hitzone assigned to the variable hitZoneSize
-            var damageFromObstacle = 10; //sets the damage amount and assigns to a variable called damageFromObstacle
+            var damageFromObstacle = 30; //sets the damage amount and assigns to a variable called damageFromObstacle
             var sawBladeHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); //creates the obstacle and assigns it to sawBladeHitZone
             sawBladeHitZone.x = x; //assigns the x value using the argument passed as the x parameter
             sawBladeHitZone.y = y; //assigns the y value using the argument passed as the y parameter
@@ -53,6 +75,7 @@ var level01 = function (window) {
             sawBladeHitZone.rotationalVelocity = -15; //rotates the sawblades
             obstacleImage.scaleX = 0.1;
             obstacleImage.scaleY = 0.1;
+            
         }
 /*
         function createSpikes(x, y){
@@ -127,7 +150,7 @@ var level01 = function (window) {
             enemy.x = x; //stores the value passed as the x argument as enemy's x value
             enemy.y = y; //stores the value passed as the y argument as enemy's y value
             game.addGameItem(enemy); //adds the enemy as an item to the game
-            enemy.velocityX = -5; //assigns a value to the velocityX of the enemy to make it move
+            enemy.velocityX = -3; //assigns a value to the velocityX of the enemy to make it move
             redSquare.scaleX = scaleX;
             redSquare.scaleY = scaleY;
 
@@ -144,14 +167,14 @@ var level01 = function (window) {
         //Revenant
         function createEnemy4(hitBoxSize, hitboxX,hitboxY, x, y, scaleX, scaleY,){
             var enemy = game.createGameItem("enemy4", hitBoxSize); //create the gameItem and store it the the variable enemy
-            var redSquare = draw.bitmap("img/Revenant.png"); //draws an image pulled from the img file
+            var redSquare = draw.bitmap("img/Reventant.png"); //draws an image pulled from the img file
             redSquare.x = hitboxX; //stores a value as the x value of the gameItem
             redSquare.y = hitboxY; //stores a value as the y value of the gameItem
             enemy.addChild(redSquare); //adds the gameItem as a child of enemy
             enemy.x = x; //stores the value passed as the x argument as enemy's x value
             enemy.y = y; //stores the value passed as the y argument as enemy's y value
             game.addGameItem(enemy); //adds the enemy as an item to the game
-            enemy.velocityX = -5; //assigns a value to the velocityX of the enemy to make it move
+            enemy.velocityX = -10; //assigns a value to the velocityX of the enemy to make it move
             redSquare.scaleX = scaleX;
             redSquare.scaleY = scaleY;
 
@@ -211,7 +234,7 @@ var level01 = function (window) {
     function createReward3(x, y, scaleX, scaleY){
         var reward = game.createGameItem("reward2", 25);
         var blueSquare = draw.bitmap("img/Med Kit.png");
-        blueSquare.x = -135;
+        blueSquare.x = -95;
         blueSquare.y = -60;
         reward.addChild(blueSquare);
         reward.x = x;
@@ -223,17 +246,17 @@ var level01 = function (window) {
 
         reward.onProjectileCollision = function () {
             game.increaseScore(100);
-            game.changeIntegrity(50);
+            game.changeIntegrity(30);
             reward.fadeOut();
         }
     }   
 
-    //
+    //Shield Cell
     function createReward4(x, y, scaleX, scaleY){
         var reward = game.createGameItem("reward2", 25);
-        var blueSquare = draw.bitmap("img/");
-        blueSquare.x = -135;
-        blueSquare.y = -60;
+        var blueSquare = draw.bitmap("img/Shield Cell.png");
+        blueSquare.x = -55;
+        blueSquare.y = -35;
         reward.addChild(blueSquare);
         reward.x = x;
         reward.y = y;
@@ -265,10 +288,10 @@ var level01 = function (window) {
                 createEnemy2(gameItem.hitBoxSize, gameItem.hitboxX, gameItem.hitboxY, gameItem.x, gameItem.y, gameItem.scaleX, gameItem.scaleY); //if the type is true, it executes createEnemy
             }
             if (gameItem.type === "enemy3"){ //checks the type of the game item
-                createEnemy2(gameItem.hitBoxSize, gameItem.hitboxX, gameItem.hitboxY, gameItem.x, gameItem.y, gameItem.scaleX, gameItem.scaleY); //if the type is true, it executes createEnemy
+                createEnemy3(gameItem.hitBoxSize, gameItem.hitboxX, gameItem.hitboxY, gameItem.x, gameItem.y, gameItem.scaleX, gameItem.scaleY); //if the type is true, it executes createEnemy
             }
             if (gameItem.type === "enemy4"){ //checks the type of the game item
-                createEnemy2(gameItem.hitBoxSize, gameItem.hitboxX, gameItem.hitboxY, gameItem.x, gameItem.y, gameItem.scaleX, gameItem.scaleY); //if the type is true, it executes createEnemy
+                createEnemy4(gameItem.hitBoxSize, gameItem.hitboxX, gameItem.hitboxY, gameItem.x, gameItem.y, gameItem.scaleX, gameItem.scaleY); //if the type is true, it executes createEnemy
             }
             if (gameItem.type === "reward"){ //checks the type of the game item
                 createReward(gameItem.x, gameItem.y, gameItem.scaleX, gameItem.scaleY); //if the type is true, it executes createReward
