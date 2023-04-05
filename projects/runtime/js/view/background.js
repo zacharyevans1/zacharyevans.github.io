@@ -32,6 +32,7 @@ var background = function (window) {
         // called at the start of game and whenever the page is resized
         // add objects for display in background. draws each image added to the background once
         function render() {
+        
             background.removeAllChildren();
 
             // TODO: 2 - Part 2
@@ -73,7 +74,13 @@ var background = function (window) {
 
 
             //loop that will create the buildings
-
+            var backgroundImg = draw.bitmap("img/image(2).png"); //draws an image using a bitmap
+            backgroundImg.x = -120; //sets x value of the image
+            backgroundImg.y = -50; //sets y value of the image
+            backgroundImg.scaleX = 1.2; //scales the image
+            backgroundImg.scaleY = 1; //scales the image
+            background.addChild(backgroundImg); //adds backgroundImg to a child of background
+            
             /*for (var i = 0; i < 5; i++) { 
                 var buildingHeight = 300; //creates a variable called buildingHeight and stores 300 as the height of the building
                 var building = draw.rect(75, buildingHeight, "LightGray", "Black", 1); //draws a rectangle and store it in the variable building
@@ -88,7 +95,8 @@ var background = function (window) {
         tree.x = canvasWidth; //sets the x value of the tree
         tree.y = groundY - 240; //sets the y value of the tree
         background.addChild(tree); //adds the tree to the background as a child
-            
+
+           
         } // end of render function - DO NOT DELETE
         
         
