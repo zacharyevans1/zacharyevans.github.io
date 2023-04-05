@@ -38,6 +38,7 @@ var level01 = function (window) {
 
                 { "type": "portal", "x": 3500, "y": groundY -20 },
                 { "type": "portal", "x": 1299, "y": groundY -20 },
+                { "type": "gas", "x": 300, "y": groundY -20 },
                 
                 { "type": "enemy", hitBoxSize: 35, hitboxX: -65, hitboxY: -70, "x": 1000, "y": groundY - 70, scaleX: 0.1, scaleY: 0.1},
                 { "type": "enemy2", hitBoxSize: 35, hitboxX: -35, hitboxY: -100, "x": 2500, "y": groundY - 70, scaleX: 0.3, scaleY: 0.3},
@@ -83,7 +84,7 @@ var level01 = function (window) {
 
         //Portal Obstacle       ///fix hitbox///
         function createPortal(x, y){
-            var hitZoneSize = 25; //the size of the hitzone assigned to the variable hitZoneSize
+            var hitZoneSize = 40; //the size of the hitzone assigned to the variable hitZoneSize
             var damageFromObstacle = 20; //sets the damage amount and assigns to a variable called damageFromObstacle
             var sawBladeHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); //creates the obstacle and assigns it to sawBladeHitZone
             sawBladeHitZone.x = x; //assigns the x value using the argument passed as the x parameter
@@ -95,6 +96,24 @@ var level01 = function (window) {
             obstacleImage.y = -200 //modify the y value of the image to line up with the hitzone
             obstacleImage.scaleX = 0.5;
             obstacleImage.scaleY = 0.5;
+            
+        }
+
+        //Caustic Trap
+         //Portal Obstacle       ///fix hitbox///
+         function createGas(x, y){
+            var hitZoneSize = 30; //the size of the hitzone assigned to the variable hitZoneSize
+            var damageFromObstacle = 20; //sets the damage amount and assigns to a variable called damageFromObstacle
+            var sawBladeHitZone = game.createObstacle(hitZoneSize, damageFromObstacle); //creates the obstacle and assigns it to sawBladeHitZone
+            sawBladeHitZone.x = x; //assigns the x value using the argument passed as the x parameter
+            sawBladeHitZone.y = y; //assigns the y value using the argument passed as the y parameter
+            game.addGameItem(sawBladeHitZone); //adds the hitzone to the game
+            var obstacleImage = draw.bitmap("img/Caustic Trap.png"); //draws the image as a bitmap and stores it to the variable obstacleImage
+            sawBladeHitZone.addChild(obstacleImage); //adds obstacleImage as a child of the sawBladeHitZone
+            obstacleImage.x = -115 //modify the x value of the image to line up with the hitzone
+            obstacleImage.y = -65 //modify the y value of the image to line up with the hitzone
+            obstacleImage.scaleX = 0.2;
+            obstacleImage.scaleY = 0.2;
             
         }
 /*
@@ -179,7 +198,7 @@ var level01 = function (window) {
             }
             enemy.onProjectileCollision = function () {
                 game.increaseScore(500); //increases the score when Halle shoots the enemy
-                game.changeIntegrity(0); //add 10 to Hall health 
+                game.changeIntegrity(10); //add 10 to Hall health 
                 enemy.fadeOut(); //enemy fades out when Halle shoots it
             }
         }   
@@ -303,6 +322,9 @@ var level01 = function (window) {
             }
             if (gameItem.type === "portal"){ //checks the type of the game item
                 createPortal(gameItem.x, gameItem.y); //if the type is true, it executes createPortal
+            }
+            if (gameItem.type === "gas"){ //checks the type of the game item
+                createGas(gameItem.x, gameItem.y); //if the type is true, it executes createPortal
             }
             if (gameItem.type === "enemy"){ //checks the type of the game item
                 createEnemy(gameItem.hitBoxSize, gameItem.hitboxX, gameItem.hitboxY, gameItem.x, gameItem.y, gameItem.scaleX, gameItem.scaleY); //if the type is true, it executes createEnemy
