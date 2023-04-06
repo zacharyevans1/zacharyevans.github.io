@@ -100,8 +100,8 @@ var level01 = function (window) {
             obstacleImage.x = -55 //modify the x value of the image to line up with the hitzone
             obstacleImage.y = -35 //modify the y value of the image to line up with the hitzone
             sawBladeHitZone.rotationalVelocity = -15; //rotates the sawblades
-            obstacleImage.scaleX = 0.1;
-            obstacleImage.scaleY = 0.1;
+            obstacleImage.scaleX = 0.1; //scales the image's X value
+            obstacleImage.scaleY = 0.1; //scales the image's Y value
             
         }
 
@@ -117,8 +117,8 @@ var level01 = function (window) {
             sawBladeHitZone.addChild(obstacleImage); //adds obstacleImage as a child of the sawBladeHitZone
             obstacleImage.x = -70 //modify the x value of the image to line up with the hitzone
             obstacleImage.y = -200 //modify the y value of the image to line up with the hitzone
-            obstacleImage.scaleX = 0.5;
-            obstacleImage.scaleY = 0.5;
+            obstacleImage.scaleX = 0.5; //scales the image's X value
+            obstacleImage.scaleY = 0.5; //scales the image's Y value
             
         }
 
@@ -135,8 +135,8 @@ var level01 = function (window) {
             sawBladeHitZone.addChild(obstacleImage); //adds obstacleImage as a child of the sawBladeHitZone
             obstacleImage.x = -115 //modify the x value of the image to line up with the hitzone
             obstacleImage.y = -65 //modify the y value of the image to line up with the hitzone
-            obstacleImage.scaleX = 0.2;
-            obstacleImage.scaleY = 0.2;
+            obstacleImage.scaleX = 0.2; //scales the image's X value
+            obstacleImage.scaleY = 0.2; //scales the image's Y value
             
         }
 /*
@@ -165,8 +165,8 @@ var level01 = function (window) {
             enemy.y = y; //stores the value passed as the y argument as enemy's y value
             game.addGameItem(enemy); //adds the enemy as an item to the game
             enemy.velocityX = -1; //assigns a value to the velocityX of the enemy to make it move
-            redSquare.scaleX = scaleX;
-            redSquare.scaleY = scaleY;
+            redSquare.scaleX = scaleX; //scales the image's X value
+            redSquare.scaleY = scaleY; //scales the image's Y value
 
             enemy.onPlayerCollision = function () {
                 game.changeIntegrity(-30); //subtracts from the health when Halle collides with the enemy
