@@ -105,7 +105,7 @@ var level01 = function (window) {
             
         }
 
-        //Portal Obstacle       ///fix hitbox///
+        //Portal Obstacle
         function createPortal(x, y){
             var hitZoneSize = 40; //the size of the hitzone assigned to the variable hitZoneSize
             var damageFromObstacle = 20; //sets the damage amount and assigns to a variable called damageFromObstacle
@@ -189,8 +189,8 @@ var level01 = function (window) {
             enemy.y = y; //stores the value passed as the y argument as enemy's y value
             game.addGameItem(enemy); //adds the enemy as an item to the game
             enemy.velocityX = -5; //assigns a value to the velocityX of the enemy to make it move
-            redSquare.scaleX = scaleX;
-            redSquare.scaleY = scaleY;
+            redSquare.scaleX = scaleX; //scales the X values
+            redSquare.scaleY = scaleY; //scales the Y values
 
             enemy.onPlayerCollision = function () {
                 game.changeIntegrity(-20); //subtracts from the health when Halle collides with the enemy
@@ -213,8 +213,8 @@ var level01 = function (window) {
             enemy.y = y; //stores the value passed as the y argument as enemy's y value
             game.addGameItem(enemy); //adds the enemy as an item to the game
             enemy.velocityX = -3; //assigns a value to the velocityX of the enemy to make it move
-            redSquare.scaleX = scaleX;
-            redSquare.scaleY = scaleY;
+            redSquare.scaleX = scaleX; //scales the X values
+            redSquare.scaleY = scaleY; //scales the Y values
 
             enemy.onPlayerCollision = function () {
                 game.changeIntegrity(-50); //subtracts from the health when Halle collides with the enemy
@@ -237,8 +237,8 @@ var level01 = function (window) {
             enemy.y = y; //stores the value passed as the y argument as enemy's y value
             game.addGameItem(enemy); //adds the enemy as an item to the game
             enemy.velocityX = -10; //assigns a value to the velocityX of the enemy to make it move
-            redSquare.scaleX = scaleX;
-            redSquare.scaleY = scaleY;
+            redSquare.scaleX = scaleX; //scales the X values
+            redSquare.scaleY = scaleY; //scales the Y values
 
             enemy.onPlayerCollision = function () {
                 game.changeIntegrity(-100000); //subtracts from the health when Halle collides with the enemy
@@ -254,20 +254,20 @@ var level01 = function (window) {
         function createReward(x, y, scaleX, scaleY){
            var reward = game.createGameItem("reward", 25);
            var blueSquare = draw.bitmap("img/Shield Bat.png");
-           blueSquare.x = -60;
-           blueSquare.y = -60;
-           reward.addChild(blueSquare);
-           reward.x = x;
-           reward.y = y;
+           blueSquare.x = -60; //sets the x value for the hitbox
+           blueSquare.y = -60; //sets the y value for the hitbox
+           reward.addChild(blueSquare); //adds blueSquare as a child to reward
+           reward.x = x; //sets up for the function call for the x value of the image itself
+           reward.y = y; //sets up for the function call for the y value of the image itself
            game.addGameItem(reward);
-           reward.velocityX = -1;
-           blueSquare.scaleX = scaleX;
-           blueSquare.scaleY = scaleY;
+           reward.velocityX = -1; //moves the reward left
+           blueSquare.scaleX = scaleX; //scales the X values
+           blueSquare.scaleY = scaleY; //scales the Y values
 
            reward.onProjectileCollision = function () {
-               game.increaseScore(100);
-               game.changeIntegrity(50);
-               reward.fadeOut();
+               game.increaseScore(100); //increases score when hit with projectile
+               game.changeIntegrity(50); //increases health when hit with projectile
+               reward.fadeOut(); //causes to fade when hit with projectile
            }
        }   
 
@@ -275,20 +275,20 @@ var level01 = function (window) {
        function createReward2(x, y, scaleX, scaleY){
         var reward = game.createGameItem("reward2", 25);
         var blueSquare = draw.bitmap("img/Pheonix Kit.png");
-        blueSquare.x = -135;
-        blueSquare.y = -60;
-        reward.addChild(blueSquare);
-        reward.x = x;
-        reward.y = y;
+        blueSquare.x = -135; //sets the x value for the hitbox
+        blueSquare.y = -60; //sets the y value for the hitbox
+        reward.addChild(blueSquare); //adds blueSquare as a child to reward
+        reward.x = x; //sets up for the function call for the x value of the image itself
+        reward.y = y; //sets up for the function call for the y value of the image itself
         game.addGameItem(reward);
-        reward.velocityX = -1;
-        blueSquare.scaleX = scaleX;
-        blueSquare.scaleY = scaleY;
+        reward.velocityX = -1; //moves the reward left
+        blueSquare.scaleX = scaleX; //scales the X values
+        blueSquare.scaleY = scaleY; //scales the Y values
 
         reward.onProjectileCollision = function () {
-            game.increaseScore(200);
-            game.changeIntegrity(100);
-            reward.fadeOut();
+            game.increaseScore(200); //increases score when hit with projectile
+            game.changeIntegrity(100); //increases health when hit with projectile
+            reward.fadeOut(); //causes to fade when hit with projectile
         }
     }   
 
@@ -296,20 +296,20 @@ var level01 = function (window) {
     function createReward3(x, y, scaleX, scaleY){
         var reward = game.createGameItem("reward2", 25);
         var blueSquare = draw.bitmap("img/Med Kit.png");
-        blueSquare.x = -95;
-        blueSquare.y = -60;
-        reward.addChild(blueSquare);
-        reward.x = x;
-        reward.y = y;
+        blueSquare.x = -95; //sets the x value for the hitbox
+        blueSquare.y = -60; //sets the y value for the hitbox
+        reward.addChild(blueSquare); //adds blueSquare as a child to reward
+        reward.x = x; //sets up for the function call for the x value of the image itself
+        reward.y = y; //sets up for the function call for the y value of the image itself
         game.addGameItem(reward);
-        reward.velocityX = -1;
-        blueSquare.scaleX = scaleX;
-        blueSquare.scaleY = scaleY;
+        reward.velocityX = -1; //moves the reward left
+        blueSquare.scaleX = scaleX; //scales the X values
+        blueSquare.scaleY = scaleY; //scales the Y values
 
         reward.onProjectileCollision = function () {
-            game.increaseScore(100);
-            game.changeIntegrity(30);
-            reward.fadeOut();
+            game.increaseScore(100); //increases score when hit with projectile
+            game.changeIntegrity(30);  //increases health when hit with projectile
+            reward.fadeOut(); //causes to fade when hit with projectile
         }
     }   
 
@@ -317,20 +317,20 @@ var level01 = function (window) {
     function createReward4(x, y, scaleX, scaleY){
         var reward = game.createGameItem("reward2", 25);
         var blueSquare = draw.bitmap("img/Shield Cell.png");
-        blueSquare.x = -55;
-        blueSquare.y = -35;
-        reward.addChild(blueSquare);
-        reward.x = x;
-        reward.y = y;
+        blueSquare.x = -55; //sets the x value for the hitbox
+        blueSquare.y = -35; //sets the y value for the hitbox
+        reward.addChild(blueSquare); //adds blueSquare as a child to reward
+        reward.x = x; //sets up for the function call for the x value of the image itself
+        reward.y = y; //sets up for the function call for the y value of the image itself
         game.addGameItem(reward);
-        reward.velocityX = -1;
-        blueSquare.scaleX = scaleX;
-        blueSquare.scaleY = scaleY;
+        reward.velocityX = -1; //moves the reward left
+        blueSquare.scaleX = scaleX; //scales the X values
+        blueSquare.scaleY = scaleY; //scales the Y values
 
         reward.onProjectileCollision = function () {
-            game.increaseScore(100);
-            game.changeIntegrity(50);
-            reward.fadeOut();
+            game.increaseScore(100); //increases score when hit with projectile
+            game.changeIntegrity(50); //increases health when hit with projectile
+            reward.fadeOut(); //causes to fade when hit with projectile
         }
     }   
 
