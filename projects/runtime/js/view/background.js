@@ -91,9 +91,11 @@ var background = function (window) {
               }
             */
             // TODO 4: Part 1 - Add a tree
-        tree = draw.bitmap("img/tree.png"); //draws a tree using bitmap and stores it the the variable tree
-        tree.x = canvasWidth; //sets the x value of the tree
+        tree = draw.bitmap("img/Crypto.png"); //draws a tree using bitmap and stores it the the variable tree
+        tree.x = canvasWidth - 200; //sets the x value of the tree
         tree.y = groundY - 240; //sets the y value of the tree
+        tree.scaleX = 0.05
+        tree.scaleY = 0.05
         background.addChild(tree); //adds the tree to the background as a child
 
            

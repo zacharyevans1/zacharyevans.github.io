@@ -35,24 +35,47 @@ var level01 = function (window) {
                 { "type": "sawblade", "x": 2900, "y": groundY -110},
                 { "type": "sawblade", "x": 2950, "y": groundY -110},
                 { "type": "sawblade", "x": 3000, "y": groundY -110},
+                { "type": "sawblade", "x": 4300, "y": groundY -110},
+                { "type": "sawblade", "x": 5000, "y": groundY -110},
+                { "type": "sawblade", "x": 6000, "y": groundY -10},
 
                 { "type": "portal", "x": 3500, "y": groundY -20 },
                 { "type": "portal", "x": 1299, "y": groundY -20 },
-                { "type": "gas", "x": 300, "y": groundY -20 },
+                { "type": "portal", "x": 7000, "y": groundY -20 },
+
+                { "type": "gas", "x": 4000, "y": groundY -20 },
+                { "type": "gas", "x": 4400, "y": groundY -20 },
+                { "type": "gas", "x": 4600, "y": groundY -20 },
+                { "type": "gas", "x": 4700, "y": groundY -20 },
+                { "type": "gas", "x": 6500, "y": groundY -20 },
+                
+                
+                
                 
                 { "type": "enemy", hitBoxSize: 35, hitboxX: -65, hitboxY: -70, "x": 1000, "y": groundY - 70, scaleX: 0.1, scaleY: 0.1},
+                { "type": "enemy", hitBoxSize: 35, hitboxX: -65, hitboxY: -70, "x": 3200, "y": groundY - 70, scaleX: 0.1, scaleY: 0.1},
+                { "type": "enemy", hitBoxSize: 35, hitboxX: -65, hitboxY: -70, "x": 5000, "y": groundY - 70, scaleX: 0.1, scaleY: 0.1},
+                { "type": "enemy", hitBoxSize: 35, hitboxX: -65, hitboxY: -70, "x": 5100, "y": groundY - 70, scaleX: 0.1, scaleY: 0.1},
+
+
                 { "type": "enemy2", hitBoxSize: 35, hitboxX: -35, hitboxY: -100, "x": 2500, "y": groundY - 70, scaleX: 0.3, scaleY: 0.3},
                 { "type": "enemy2", hitBoxSize: 35, hitboxX: -35, hitboxY: -100, "x": 6000, "y": groundY - 70, scaleX: 0.3, scaleY: 0.3},
+                { "type": "enemy2", hitBoxSize: 35, hitboxX: -35, hitboxY: -100, "x": 12000, "y": groundY - 70, scaleX: 0.3, scaleY: 0.3},
+
                 { "type": "enemy3", hitBoxSize: 35, hitboxX: -65, hitboxY: -70, "x": 4500, "y": groundY - 70, scaleX: 0.1, scaleY: 0.1},
+                { "type": "enemy3", hitBoxSize: 35, hitboxX: -65, hitboxY: -70, "x": 7500, "y": groundY - 70, scaleX: 0.1, scaleY: 0.1},
+                { "type": "enemy3", hitBoxSize: 35, hitboxX: -65, hitboxY: -70, "x": 10000, "y": groundY - 70, scaleX: 0.1, scaleY: 0.1},
+
                 { "type": "enemy4", hitBoxSize: 35, hitboxX: -160, hitboxY: -70, "x": 10000, "y": groundY - 70, scaleX: 0.25, scaleY: 0.25},
                 { "type": "enemy4", hitBoxSize: 35, hitboxX: -160, hitboxY: -70, "x": 20000, "y": groundY - 70, scaleX: 0.25, scaleY: 0.25},
                 { "type": "enemy4", hitBoxSize: 35, hitboxX: -160, hitboxY: -70, "x": 30000, "y": groundY - 70, scaleX: 0.25, scaleY: 0.25},
                 { "type": "enemy4", hitBoxSize: 35, hitboxX: -160, hitboxY: -70, "x": 35000, "y": groundY - 70, scaleX: 0.25, scaleY: 0.25},
                 { "type": "enemy4", hitBoxSize: 35, hitboxX: -160, hitboxY: -70, "x": 36000, "y": groundY - 70, scaleX: 0.25, scaleY: 0.25},
                 { "type": "enemy4", hitBoxSize: 35, hitboxX: -160, hitboxY: -70, "x": 36599, "y": groundY - 70, scaleX: 0.25, scaleY: 0.25},
+                { "type": "enemy4", hitBoxSize: 35, hitboxX: -160, hitboxY: -70, "x": 40000, "y": groundY - 70, scaleX: 0.25, scaleY: 0.25},
 
                 { "type": "reward", "x": 1500, "y": groundY -50, "scaleX": 0.125, "scaleY":0.125},
-                { "type": "reward2", "x": 5500, "y": groundY -50, "scaleX": 0.125, "scaleY":0.125},
+                { "type": "reward2", "x": 5400, "y": groundY -50, "scaleX": 0.125, "scaleY":0.125},
                 { "type": "reward3", "x": 3000, "y": groundY -25, "scaleX": 0.125, "scaleY":0.125},
                 { "type": "reward4", "x": 2200, "y": groundY -20, "scaleX": 0.06, "scaleY":0.06},
             ]
